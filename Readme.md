@@ -38,4 +38,4 @@ A backend system that provides secure user registration, login, and access to pr
 
 ---
 
-[Swagger Documentation](https://user-auth-system-837a.onrender.com//api-docs/)
+[Swagger Documentation](https://user-auth-system-837a.onrender.com/api-docs)
