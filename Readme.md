@@ -38,4 +38,7 @@ A backend system that provides secure user registration, login, and access to pr
 
 ---
 
-[Swagger Documentation](https://user-auth-system-837a.onrender.com/api-docs)
+## API Documentation
+
+Access the live API documentation here:  
+**Swagger UI** → [https://user-auth-system-837a.onrender.com/api-docs](https://user-auth-system-837a.onrender.com/api-docs)
