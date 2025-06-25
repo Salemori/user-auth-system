@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:8080",
+        url: "https://user-auth-system-837a.onrender.com",
       },
     ],
     components: {
