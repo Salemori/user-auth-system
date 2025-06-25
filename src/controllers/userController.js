@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+
 exports.handleSignUp = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
@@ -10,7 +11,6 @@ exports.handleSignUp = async (req, res) => {
 
     if (userExist) {
       return res.status(409).json({
-        status: "failed",
         message: "User already exist",
       });
     }
@@ -48,7 +48,6 @@ exports.handleLogin = async (req, res) => {
 
         if (!user) {
             return res.status(409).json({
-                status: "failed",
                 message: "User does not exist"
             });
         }
@@ -56,7 +55,6 @@ exports.handleLogin = async (req, res) => {
         const passwordEqual = await bcrypt.compare(password, user.password);
         if (!passwordEqual) {
             return res.status(401).json({
-                status: "failed",
                 message: "User login failed"
             });
         }
@@ -75,3 +73,25 @@ exports.handleLogin = async (req, res) => {
         });
     }
 }
+
+exports.handleGetUserProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const user = await User.findById(userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "failed",
+      message: error.message,
+    });
+  }
+};
